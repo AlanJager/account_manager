@@ -2,6 +2,8 @@ class RecordsController < ApplicationController
   def index
     # get all rows in Records
     @records = Record.all
+    $redis.set("mykey", "hello world")
+    @info = $redis.get("mykey")
   end
 
   def create
